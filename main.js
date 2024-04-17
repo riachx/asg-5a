@@ -9,7 +9,7 @@ import {MTLLoader} from 'three/addons/loaders/MTLLoader.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 import './App.css'
-import { MeshPhongMaterial } from 'three';
+import { BoxGeometry, MeshPhongMaterial } from 'three';
 import { floorPowerOfTwo } from 'three/src/math/MathUtils';
 
 let camera, scene, renderer, cube, cubes, toruses,torus, knot, knots,flower_knots;
@@ -70,15 +70,18 @@ function main() {
     const light = new THREE.DirectionalLight(color, intensity);
     light.position.set(-1, 2, 4);
 
-    const intensity2 = 0.1;
+    const intensity2 = 0.3;
     const color2 = 0xe667c6;
-    const light2 = new THREE.DirectionalLight(color2, intensity2);
+    const light2 = new THREE.AmbientLight(color2, intensity2);
     light2.position.set(1, 2, -2);
 
 
-    const light3 = new THREE.AmbientLight(color, intensity);
-    light3.position.set(0,0,2);
+    const intensity3 = 0.10;
+    const light3 = new THREE.PointLight(color, intensity3);
+    light3.position.set(-1.5,1,0);
+    light3.scale.set(0.1,0.1,0.1)
     scene.add(light,light2, light3);
+
 
     /*cubes = [
         makeCube(geometry, 0x44aa88,  2, 0.9, "./assets/flower1.jpeg"),
@@ -185,16 +188,17 @@ function main() {
 
             scene.add(gltf.scene);
 
-            /*const clone = gltf.scene.clone();
+            const clone = gltf.scene.clone();
 
             // Optionally, modify the clone's properties
             clone.scale.y -= 0.05;
-            clone.rotation.x += 1;
-            clone.rotation.y = -30;
+            clone.rotation.x = 5.3;
+            clone.rotation.y = 1.2;
             clone.rotation.z += 1;
-            clone.position.x = -1.3;
-            clone.position.y = -0.4;
-            scene.add(clone);*/
+            clone.position.x = 3;
+            clone.position.y = -2.5;
+            clone.position.z = -0.4;
+            scene.add(clone);
         },
         function (xhr) {
             console.log((xhr.loaded / xhr.total * 100) + '% loaded');
@@ -303,7 +307,7 @@ function main() {
         //scene.background = texture;
         const loader = new THREE.TextureLoader();
         loader.load('./assets/background.png', function(texture) {
-            //scene.background = texture;
+            scene.background = texture;
         });
         scene.environment = texture;  // Optional: use the same texture as environment
       });
@@ -334,27 +338,68 @@ function main() {
         });
     });*/
 
+    
+    const spiral_mat = Object.assign(new MeshTransmissionMaterial(8), {
+      //map:texture,
+      clearcoatRoughness: 1,
+        transmission: 0.92,
+        //anisotropy: 0.5,
+        // Set to > 0 for diffuse roughness
+        roughness: 0.1,
+        thickness: 10,
+        ior: 1.3,
+        envMapIntensity: 0.5,
+        bloomstrength:50,
 
+    });
+    /*const line_geo = new THREE.BoxGeometry(2,0.05,0.05);
+    const line_mat = material;
+    const line = new THREE.Mesh(line_geo,line_mat);
+    line.position.y = 1;
+    line.position.x = -2;
+    scene.add(line);*/
 
-
-    /*const flower = new OBJLoader();
-    const mtlLoader = new MTLLoader();
-    mtlLoader.load('./assets/flower1.mtl', (mtl) => {
-    mtl.preload();
-    flower.setMaterials(mtl);
-    flower.load('./assets/flower1.obj', (root) => {
+    const spiral = new OBJLoader();
+    const spiral2 = new OBJLoader();
+    //const mtlLoader = new MTLLoader();
+    //mtlLoader.load('./assets/spiral.mtl', (mtl) => {
+    //mtl.preload();
+    //flower.setMaterials(mtl);
+    spiral.load('./assets/spiral.obj', (root) => {
         root.traverse((child) => {
             if (child.isMesh) {
-                child.position.y = 0;
-                child.position.x = 0;
-                child.scale.z = 0.04;
-                child.scale.x = 0.04;
-                child.scale.y = 0.04;
+                child.material = spiral_mat;
+                child.position.y = 1.9;
+                child.position.z = -1;
+                child.position.x = -1.2;
+                child.rotation.set(2.2,0,0.6);
+                child.scale.z = 0.3;
+                child.scale.x = 0.4;
+                child.scale.y = 0.4;
             }
         });
       scene.add(root);
+
     });
-  });*/
+
+    spiral2.load('./assets/spiral.obj', (root) => {
+      root.traverse((child) => {
+          if (child.isMesh) {
+              child.material = spiral_mat;
+              child.position.y = -0.4;
+              child.position.z = 0.1;
+              child.position.x = 3.3;
+              child.rotation.set(3.7,0.1,0.6);
+              child.scale.z = 0.3;
+              child.scale.x = 0.4;
+              child.scale.y = 0.4;
+          }
+      });
+    scene.add(root);
+
+  });
+  
+  //});
     
 
     //HEAVEN
