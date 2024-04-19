@@ -202,10 +202,10 @@ function main() {
 
 
   const torusknot_geometry = new THREE.TorusKnotGeometry(11, 3, 100, 35);
-  const torusknot_mat = Object.assign(new MeshTransmissionMaterial(8), {
+  const torusknot_mat = Object.assign(new MeshTransmissionMaterial(10), {
     //map:texture,
     clearcoatRoughness: 0,
-    transmission: 0.98,
+    transmission: 0.5,
     chromaticAberration: 0.1,
 
     //anisotropy: 0.5,
@@ -213,7 +213,6 @@ function main() {
     roughness: 0,
     ior: 1.0,
     envMapIntensity: 1,
-    bloomstrength: 50,
 
   });
   const loader_torus = new THREE.TextureLoader();
@@ -244,7 +243,7 @@ function main() {
   });
 
 
-  const spiral_mat = Object.assign(new MeshTransmissionMaterial(8), {
+  /*const spiral_mat = Object.assign(new MeshTransmissionMaterial(8), {
     //map:texture,
     clearcoatRoughness: 1,
     transmission: 0.92,
@@ -256,7 +255,16 @@ function main() {
     envMapIntensity: 0.5,
     bloomstrength: 50,
 
+  });*/
+
+  const spiral_mat = new THREE.MeshPhysicalMaterial({
+    transmission: 0.9,
+    thickness: 10,
+    roughness: 0,
+    envMap: scene.environment,
   });
+
+
 
   const spiral = new OBJLoader();
   const spiral2 = new OBJLoader();
@@ -414,12 +422,12 @@ function addCubes(x, y, z, s) {
 function makeKnot() {
   const knot_geo = new THREE.TorusGeometry(0.7, 0.1, 4, 40);
   //const knot_mat = new MeshPhongMaterial();
-  const knot_mat = Object.assign(new MeshTransmissionMaterial(8), {
+  const knot_mat = Object.assign(new MeshTransmissionMaterial(10), {
     //map:texture,
     //clearcoatRoughness: 0,
     transmission: 0.95,
-    transparent: true,
-    opacity: 0.5,
+    //transparent: true,
+    //opacity: 0.5,
     //anisotropy: 0.5,
     // Set to > 0 for diffuse roughness
     roughness: 0,
@@ -496,7 +504,6 @@ function addKnot(x, y, z, s, r) {
     //map:texture,
     clearcoatRoughness: 1,
     transmission: 0.99,
-    opacity: 0.1,
     //anisotropy: 0.5,
     // Set to > 0 for diffuse roughness
     roughness: 0.1,
