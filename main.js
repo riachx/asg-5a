@@ -416,13 +416,13 @@ function makeKnot() {
   const knot_mat = Object.assign(new MeshTransmissionMaterial(8), {
     //map:texture,
     //clearcoatRoughness: 0,
-    transmission: 0.5,
+    transmission: 0.95,
     //anisotropy: 0.5,
     // Set to > 0 for diffuse roughness
-    //roughness: 1,
+    roughness: 0,
     //thickness: 1,
     //ior: 1.1,
-    //envMapIntensity: 1,
+    envMapIntensity: 1,
     //bloomstrength: 50,
 
   });
