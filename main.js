@@ -262,6 +262,8 @@ function main() {
     thickness: 10,
     roughness: 0,
     envMap: scene.environment,
+    transparent: true,
+    opacity: 0.7,
   });
 
 
