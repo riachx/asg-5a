@@ -29,24 +29,24 @@ function main() {
   camera.position.z = 2;
 
   scene = new THREE.Scene();
-  const boxWidth = 1;
+  const boxWidth = 5;
   const boxHeight = 1;
   const boxDepth = 1;
   const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
 
 
   const color = 0xFFFFFF;
-  const intensity = 0.1
+  const intensity = 5;
   const light = new THREE.DirectionalLight(color, intensity);
   light.position.set(-1, 2, 4);
 
-  const intensity2 = 0.3;
+  const intensity2 = 3;
   const color2 = 0xe667c6;
   const light2 = new THREE.AmbientLight(color2, intensity2);
   light2.position.set(1, 2, -2);
 
 
-  const intensity3 = 0.10;
+  const intensity3 = 3;
   const light3 = new THREE.PointLight(color, intensity3);
   light3.position.set(-1.5, 1, 0);
   light3.scale.set(0.1, 0.1, 0.1)
@@ -225,14 +225,16 @@ function main() {
   const rgbeLoader = new RGBELoader();
   rgbeLoader.load('./assets/belfast.hdr', function (texture) {
     texture.mapping = THREE.EquirectangularReflectionMapping;
-
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 0.4;
+    
     // Set the scene background or environment
     //scene.background = texture;
     const loader = new THREE.TextureLoader();
     loader.load('./assets/background.png', function (texture) {
-      scene.background = texture;
+      //scene.background = texture;
     });
-    scene.environment = texture;  // Optional: use the same texture as environment
+    scene.background = texture;  // Optional: use the same texture as environment
   });
 
 
