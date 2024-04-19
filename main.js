@@ -9,10 +9,9 @@ import {MTLLoader} from 'three/addons/loaders/MTLLoader.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 import './App.css'
-import { BoxGeometry, MeshPhongMaterial } from 'three';
-import { floorPowerOfTwo } from 'three/src/math/MathUtils';
+import {MeshPhongMaterial } from 'three';
 
-let camera, scene, renderer, cube, cubes, toruses,torus, knot, knots,flower_knots;
+let camera, scene, renderer, cubes, knots,flower_knots;
 cubes = [];
 flower_knots = [];
 
@@ -61,9 +60,6 @@ function main() {
     const boxDepth = 1;
     const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
 
-    //const material = new THREE.MeshPhongMaterial({color: 0x44aa88});
-    //cube = new THREE.Mesh(geometry, material);
-    //scene.add(cube);
 
     const color = 0xFFFFFF;
     const intensity = 0.1
@@ -83,45 +79,8 @@ function main() {
     scene.add(light,light2, light3);
 
 
-    /*cubes = [
-        makeCube(geometry, 0x44aa88,  2, 0.9, "./assets/flower1.jpeg"),
-        makeCube(geometry, 0x44aa88,  2, 0.3, "./assets/flower3.png"),
-        makeCube(geometry, 0x44aa88,  2, -0.3, "./assets/flower4.png"),
-        makeCube(geometry, 0x44aa88,  2, -1.0, "./assets/flower2.png"),
-      ];*/
-
-    /*torus = new THREE.TorusGeometry(0.8, 0.05, 16, 100);
-
-    toruses = [
-    makeTorus(torus, 0x44aa88,  0, 0),
-    makeTorus(torus, 0x44aa88,  0, 90),
-
-    makeTorus(torus, 0x44aa88,  0, 90),
-
-    ];*/
-
     knots = [ makeKnot(), ]
     
-    // flower
-    
-    /*const loader = new GLTFLoader();
-
-    loader.load(
-        './assets/satsuki/scene.gltf',
-        function (gltf) {
-            gltf.scene.scale.x=0.2;
-            gltf.scene.scale.y=0.2;
-            gltf.scene.scale.z=0.2;
-            gltf.scene.position.x=1.5;
-            scene.add(gltf.scene);
-        },
-        function (xhr) {
-            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-        },
-        function (error) {
-            console.log("error");
-        }
-    );*/
 
     const loader2 = new THREE.TextureLoader();
     loader2.load(
@@ -319,25 +278,6 @@ function main() {
         
     });
     
-
-   /* var mtlLoader = new MTLLoader();
-    var plant_cube = undefined;
-    mtlLoader.load("./assets/flower1.mtl", function(materials)
-    {
-        materials.preload();
-        var objLoader = new OBJLoader();
-        objLoader.setMaterials(materials);
-        objLoader.load('./assets/flower1.obj', function(object)
-        {    
-            
-            plant_cube = object;
-            object.scale.x = 0.1;
-            object.scale.y = 0.1;
-            object.scale.z = 0.1;
-            scene.add( plant_cube );
-        });
-    });*/
-
     
     const spiral_mat = Object.assign(new MeshTransmissionMaterial(8), {
       //map:texture,
@@ -352,19 +292,10 @@ function main() {
         bloomstrength:50,
 
     });
-    /*const line_geo = new THREE.BoxGeometry(2,0.05,0.05);
-    const line_mat = material;
-    const line = new THREE.Mesh(line_geo,line_mat);
-    line.position.y = 1;
-    line.position.x = -2;
-    scene.add(line);*/
 
     const spiral = new OBJLoader();
     const spiral2 = new OBJLoader();
-    //const mtlLoader = new MTLLoader();
-    //mtlLoader.load('./assets/spiral.mtl', (mtl) => {
-    //mtl.preload();
-    //flower.setMaterials(mtl);
+
     spiral.load('./assets/spiral.obj', (root) => {
         root.traverse((child) => {
             if (child.isMesh) {
@@ -418,9 +349,6 @@ function main() {
         scene.add(root);
       });
 
-    //const cameraHelper = new THREE.CameraHelper(camera);
-    //scene.add(cameraHelper);
-    
 
     const gui = new dat.GUI();
     gui.add(camera, 'fov', 1, 180).onChange(updateCamera);
@@ -448,16 +376,6 @@ function onWindowResize() {
 function render(time) {
     time *= 0.001;  // convert time to seconds
    
-
-    /*cubes.forEach((cube, ndx) => {
-        const speed = 1 + ndx * .1;
-        const rot = time * speed;
-        cube.rotation.x = rot;
-        cube.rotation.y = rot;
-        
-      });*/
-
-      
 
       flower_knots.forEach(knots => {
         knots.rotation.x += 0.01;
@@ -523,10 +441,6 @@ function addCubes(x,y,z,s){
     const rect = new THREE.Mesh( rect_geo, rect_mat ); 
     rect.position.set(x,y,z);
     rect.scale.set(s,s,s);
-
-    //const rect2 = rect.clone();
-    //rect2.scale.set(0.15,0.15,0.15);
-    //rect2.position.set(-1.4,-0.1,0);
 
     scene.add(rect);
     return rect;
@@ -603,10 +517,6 @@ function makeSphere(x,y,z,s){
     const sphere = new THREE.Mesh( sphere_geo, sphere_mat ); 
     sphere.position.set(x,y,z);
     sphere.scale.set(s,s,s);
-
-    //const rect2 = rect.clone();
-    //rect2.scale.set(0.15,0.15,0.15);
-    //rect2.position.set(-1.4,-0.1,0);
 
     scene.add(sphere);
     return sphere;
