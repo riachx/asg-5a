@@ -201,8 +201,8 @@ function main() {
   ]
 
 
-  const torusknot_geometry = new THREE.TorusKnotGeometry(11, 3, 100, 35);
-  const torusknot_mat = Object.assign(new MeshTransmissionMaterial(10), {
+  const torusknot_geometry = new THREE.TorusKnotGeometry(11, 3, 100, 30);
+  const torusknot_mat = Object.assign(new MeshTransmissionMaterial(8), {
     //map:texture,
     clearcoatRoughness: 0,
     transmission: 0.5,
@@ -431,8 +431,8 @@ function makeKnot() {
     //map:texture,
     //clearcoatRoughness: 0,
     transmission: 0.95,
-    //transparent: true,
-    //opacity: 0.5,
+    transparent: true,
+    opacity: 0.95,
     //anisotropy: 0.5,
     // Set to > 0 for diffuse roughness
     roughness: 0.1,
@@ -486,15 +486,12 @@ function makeSphere(x, y, z, s) {
     transmission: 0.9,
     chromaticAberration: 0.5,
     transparent: true,
-    opacity: 0.85,
+    opacity: 0.95,
     //anisotropy: 0.5,
     // Set to > 0 for diffuse roughness
-    roughness: 0.1,
+    roughness: 0.4,
     ior: 1.2,
     envMapIntensity: 1,
-    bloomstrength: 50,
-    distortion: 0,
-    distortionScale: 0.1,
 
 
   });
