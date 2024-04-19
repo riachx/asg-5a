@@ -4,7 +4,7 @@ import { MeshTransmissionMaterial } from './MeshTransmissionMaterial.js'
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { MeshPhongMaterial, MeshPhysicalMaterial } from 'three';
+import { MeshPhongMaterial, MeshPhysicalMaterial, MeshStandardMaterial } from 'three';
 
 let camera, scene, renderer, cubes, knots, flower_knots;
 cubes = [];
@@ -202,7 +202,7 @@ function main() {
 
 
   const torusknot_geometry = new THREE.TorusKnotGeometry(11, 3, 100, 30);
-  const torusknot_mat = new MeshPhysicalMaterial({transparent:true, opacity:0.8});
+  const torusknot_mat = new MeshStandardMaterial({});
  /* const torusknot_mat = Object.assign(new MeshTransmissionMaterial(8), {
     //map:texture,
     clearcoatRoughness: 0,
