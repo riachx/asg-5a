@@ -36,17 +36,17 @@ function main() {
 
 
   const color = 0xFFFFFF;
-  const intensity = 0.2;
+  const intensity = 0.5;
   const light = new THREE.DirectionalLight(color, intensity);
   light.position.set(-1, 2, 4);
 
-  const intensity2 = 0.2;
+  const intensity2 = 0.7;
   const color2 = 0xe667c6;
   const light2 = new THREE.AmbientLight(color2, intensity2);
   light2.position.set(1, 2, -2);
 
 
-  const intensity3 = 0.2;
+  const intensity3 = 0.8;
   const light3 = new THREE.PointLight(color, intensity3);
   light3.position.set(-1.5, 1, 0);
   light3.scale.set(0.1, 0.1, 0.1)
@@ -418,11 +418,12 @@ function makeKnot() {
     //map:texture,
     //clearcoatRoughness: 0,
     transmission: 0.95,
+    opacity: 0.5,
     //anisotropy: 0.5,
     // Set to > 0 for diffuse roughness
     roughness: 0,
     thickness: 1,
-    ior: 1.1,
+    ior: 1.2,
     envMapIntensity: 1,
     //bloomstrength: 50,
 
