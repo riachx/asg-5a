@@ -209,7 +209,7 @@ function main() {
     chromaticAberration: 0.1,
 
     transparent: true,
-    opacity: 0.7,
+    opacity: 0.85,
     //anisotropy: 0.5,
     // Set to > 0 for diffuse roughness
     roughness: 0,
@@ -263,7 +263,7 @@ function main() {
     transmission: 1,
     roughness: 0,
     transparent: true,
-    opacity: 0.7,
+    opacity: 0.8,
     envMap: scene.environment,
   });
 
@@ -405,7 +405,7 @@ function addCubes(x, y, z, s) {
     transmission: 0.9,
     chromaticAberration: 0,
     transparent: true,
-    opacity: 0.7,
+    opacity: 0.8,
     //anisotropy: 0.5,
     // Set to > 0 for diffuse roughness
     roughness: 0.5,
@@ -431,15 +431,13 @@ function makeKnot() {
     //map:texture,
     //clearcoatRoughness: 0,
     transmission: 0.95,
-    transparent: true,
-    opacity: 0.7,
     //transparent: true,
     //opacity: 0.5,
     //anisotropy: 0.5,
     // Set to > 0 for diffuse roughness
-    roughness: 0,
+    roughness: 0.1,
     thickness: 1,
-    ior: 1.2,
+    ior: 1.3,
     envMapIntensity: 1,
     //bloomstrength: 50,
 
@@ -488,7 +486,7 @@ function makeSphere(x, y, z, s) {
     transmission: 0.9,
     chromaticAberration: 0.5,
     transparent: true,
-    opacity: 0.7,
+    opacity: 0.85,
     //anisotropy: 0.5,
     // Set to > 0 for diffuse roughness
     roughness: 0.1,
@@ -515,7 +513,7 @@ function addKnot(x, y, z, s, r) {
     clearcoatRoughness: 1,
     transmission: 0.99,
     transparent: true,
-    opacity: 0.7,
+    opacity: 0.8,
     //anisotropy: 0.5,
     // Set to > 0 for diffuse roughness
     roughness: 0.1,
