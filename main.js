@@ -235,6 +235,7 @@ function main() {
       //scene.background = texture;
     });
     scene.background = texture;  // Optional: use the same texture as environment
+    scene.environment = texture;
   });
 
 
