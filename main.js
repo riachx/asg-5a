@@ -36,7 +36,7 @@ function main() {
 
 
   const color = 0xFFFFFF;
-  const intensity = 2;
+  const intensity = 1;
   const light = new THREE.DirectionalLight(color, intensity);
   light.position.set(-1, 2, 4);
 
@@ -46,7 +46,7 @@ function main() {
   light2.position.set(1, 2, -2);
 
 
-  const intensity3 = 3;
+  const intensity3 = 2;
   const light3 = new THREE.PointLight(color, intensity3);
   light3.position.set(-1.5, 1, 0);
   light3.scale.set(0.1, 0.1, 0.1)
@@ -411,8 +411,9 @@ function addCubes(x, y, z, s) {
 }
 
 function makeKnot() {
-  const knot_geo = new THREE.TorusGeometry(0.7, 0.1, 4);
-  const knot_mat = Object.assign(new MeshTransmissionMaterial(8), {
+  const knot_geo = new THREE.TorusGeometry(0.7, 0.1, 4, 40);
+  const knot_mat = new MeshPhongMaterial();
+  /*const knot_mat = Object.assign(new MeshTransmissionMaterial(8), {
     //map:texture,
     clearcoatRoughness: 0,
     transmission: 0.96,
@@ -424,7 +425,7 @@ function makeKnot() {
     envMapIntensity: 1,
     bloomstrength: 50,
 
-  });
+  });*/
   const knot = new THREE.Mesh(knot_geo, knot_mat);
   knot.scale.x = 1.6;
   knot.scale.y = 0.8;
