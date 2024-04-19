@@ -418,6 +418,7 @@ function makeKnot() {
     //map:texture,
     //clearcoatRoughness: 0,
     transmission: 0.95,
+    transparent: true,
     opacity: 0.5,
     //anisotropy: 0.5,
     // Set to > 0 for diffuse roughness
