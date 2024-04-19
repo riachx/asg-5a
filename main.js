@@ -36,11 +36,11 @@ function main() {
 
 
   const color = 0xFFFFFF;
-  const intensity = 0.8;
+  const intensity = 1;
   const light = new THREE.DirectionalLight(color, intensity);
   light.position.set(-1, 2, 4);
 
-  const intensity2 = 0.9;
+  const intensity2 = 1;
   const color2 = 0xe667c6;
   const light2 = new THREE.AmbientLight(color2, intensity2);
   light2.position.set(1, 2, -2);
@@ -228,7 +228,7 @@ function main() {
   rgbeLoader.load('./assets/belfast.hdr', function (texture) {
     texture.mapping = THREE.EquirectangularReflectionMapping;
     renderer.toneMapping = THREE.CineonToneMapping;
-    renderer.toneMappingExposure = 0.9;
+    renderer.toneMappingExposure = 1;
     
     // Set the scene background or environment
     //scene.background = texture;
