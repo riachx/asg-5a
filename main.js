@@ -4,7 +4,7 @@ import { MeshTransmissionMaterial } from './MeshTransmissionMaterial.js'
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { MeshPhongMaterial, MeshPhysicalMaterial, MeshStandardMaterial } from 'three';
+import { CubeRefractionMapping, MeshPhongMaterial, MeshPhysicalMaterial, MeshStandardMaterial } from 'three';
 
 let camera, scene, renderer, cubes, knots, flower_knots;
 cubes = [];
@@ -202,7 +202,7 @@ function main() {
 
 
   const torusknot_geometry = new THREE.TorusKnotGeometry(11, 3, 100, 30);
-  const torusknot_mat = new MeshStandardMaterial({});
+  const torusknot_mat = new MeshStandardMaterial({roughness:0,});
  /* const torusknot_mat = Object.assign(new MeshTransmissionMaterial(8), {
     //map:texture,
     clearcoatRoughness: 0,
@@ -506,7 +506,8 @@ function makeSphere(x, y, z, s) {
 function addKnot(x, y, z, s, r) {
 
   const torusknot2_geometry = new THREE.TorusKnotGeometry(0.8, 0.12, 80, 35);
-  const torusknot2_mat = new MeshPhongMaterial({specular:0xffffff,shininess:100});
+  const torusknot2_mat = new MeshStandardMaterial({roughness:0, metalness:0.4,});
+  
   /*const torusknot2_mat = Object.assign(new MeshTransmissionMaterial(8), {
     //map:texture,
     clearcoatRoughness: 1,
