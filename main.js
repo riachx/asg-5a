@@ -36,17 +36,17 @@ function main() {
 
 
   const color = 0xFFFFFF;
-  const intensity = 0.5;
+  const intensity = 0.8;
   const light = new THREE.DirectionalLight(color, intensity);
   light.position.set(-1, 2, 4);
 
-  const intensity2 = 0.7;
+  const intensity2 = 0.9;
   const color2 = 0xe667c6;
   const light2 = new THREE.AmbientLight(color2, intensity2);
   light2.position.set(1, 2, -2);
 
 
-  const intensity3 = 0.8;
+  const intensity3 = 1;
   const light3 = new THREE.PointLight(color, intensity3);
   light3.position.set(-1.5, 1, 0);
   light3.scale.set(0.1, 0.1, 0.1)
@@ -208,6 +208,8 @@ function main() {
     transmission: 0.5,
     chromaticAberration: 0.1,
 
+    transparent: true,
+    opacity: 0.7,
     //anisotropy: 0.5,
     // Set to > 0 for diffuse roughness
     roughness: 0,
@@ -260,6 +262,8 @@ function main() {
   const spiral_mat = new THREE.MeshPhysicalMaterial({
     transmission: 1,
     roughness: 0,
+    transparent: true,
+    opacity: 0.7,
     envMap: scene.environment,
   });
 
@@ -400,6 +404,8 @@ function addCubes(x, y, z, s) {
     //map:texture,
     transmission: 0.9,
     chromaticAberration: 0,
+    transparent: true,
+    opacity: 0.7,
     //anisotropy: 0.5,
     // Set to > 0 for diffuse roughness
     roughness: 0.5,
@@ -425,6 +431,8 @@ function makeKnot() {
     //map:texture,
     //clearcoatRoughness: 0,
     transmission: 0.95,
+    transparent: true,
+    opacity: 0.7,
     //transparent: true,
     //opacity: 0.5,
     //anisotropy: 0.5,
@@ -451,6 +459,7 @@ function makeTorus(geometry, color, x, rotate) {
     clearcoatRoughness: 0,
     transmission: 0.95,
     chromaticAberration: 0.1,
+
     //anisotropy: 0.5,
     // Set to > 0 for diffuse roughness
     roughness: 0,
@@ -478,6 +487,8 @@ function makeSphere(x, y, z, s) {
     //map:texture,
     transmission: 0.9,
     chromaticAberration: 0.5,
+    transparent: true,
+    opacity: 0.7,
     //anisotropy: 0.5,
     // Set to > 0 for diffuse roughness
     roughness: 0.1,
@@ -503,6 +514,8 @@ function addKnot(x, y, z, s, r) {
     //map:texture,
     clearcoatRoughness: 1,
     transmission: 0.99,
+    transparent: true,
+    opacity: 0.7,
     //anisotropy: 0.5,
     // Set to > 0 for diffuse roughness
     roughness: 0.1,
