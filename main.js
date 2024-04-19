@@ -259,12 +259,15 @@ function main() {
 
   });*/
 
-  const spiral_mat = new THREE.MeshPhysicalMaterial({
-    transmission: 1,
+  const spiral_mat = new THREE.MeshPhongMaterial({
+    
     roughness: 0,
     transparent: true,
-    opacity: 0.8,
+    opacity: 0.2,
     envMap: scene.environment,
+    shininess:100,
+    specular: 0xffffff,
+    side: THREE.DoubleSide,
   });
 
 
@@ -426,8 +429,8 @@ function addCubes(x, y, z, s) {
 
 function makeKnot() {
   const knot_geo = new THREE.TorusGeometry(0.7, 0.1, 4, 40);
-  const knot_mat = new MeshPhongMaterial({roughness: 0.1});
-  /*const knot_mat = Object.assign(new MeshTransmissionMaterial(10), {
+  //const knot_mat = new MeshPhongMaterial();
+  const knot_mat = Object.assign(new MeshTransmissionMaterial(10), {
     //map:texture,
     //clearcoatRoughness: 0,
     //transmission: 0.2,
@@ -441,7 +444,7 @@ function makeKnot() {
     envMapIntensity: 1,
     //bloomstrength: 50,
 
-  });*/
+  });
   const knot = new THREE.Mesh(knot_geo, knot_mat);
   knot.scale.x = 1.6;
   knot.scale.y = 0.8;
@@ -505,21 +508,21 @@ function makeSphere(x, y, z, s) {
 function addKnot(x, y, z, s, r) {
 
   const torusknot2_geometry = new THREE.TorusKnotGeometry(0.8, 0.12, 80, 35);
-  const torusknot2_mat = Object.assign(new MeshTransmissionMaterial(8), {
+  const torusknot2_mat = new MeshPhongMaterial({specular: 0xffffff, shininess: 100});
+  /*const torusknot2_mat = Object.assign(new MeshTransmissionMaterial(8), {
     //map:texture,
     clearcoatRoughness: 1,
-    transmission: 0.99,
-    transparent: true,
-    opacity: 0.8,
+    transmission: 0.5,
+    //transparent: true,
+    //opacity: 0.8,
     //anisotropy: 0.5,
     // Set to > 0 for diffuse roughness
     roughness: 0.1,
-    thickness: 10,
-    ior: 5,
+    //thickness: 10,
+    //ior: 5,
     envMapIntensity: 0.8,
-    bloomstrength: 50,
 
-  });
+  });*/
   const loader_torus2 = new THREE.TextureLoader();
 
   const torusknot2 = new THREE.Mesh(torusknot2_geometry, torusknot2_mat);
