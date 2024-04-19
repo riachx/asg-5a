@@ -4,7 +4,6 @@ import { MeshTransmissionMaterial } from './MeshTransmissionMaterial'
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import './App.css'
 import { MeshPhongMaterial } from 'three';
 
 let camera, scene, renderer, cubes, knots, flower_knots;
