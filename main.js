@@ -4,7 +4,7 @@ import { MeshTransmissionMaterial } from './MeshTransmissionMaterial.js'
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { MeshPhongMaterial } from 'three';
+import { MeshPhongMaterial, MeshPhysicalMaterial } from 'three';
 
 let camera, scene, renderer, cubes, knots, flower_knots;
 cubes = [];
@@ -53,7 +53,7 @@ function main() {
   scene.add(light, light2, light3);
 
 
-  knots = [makeKnot(),]
+  knots = [makeKnot()]
 
 
   const loader2 = new THREE.TextureLoader();
@@ -202,7 +202,8 @@ function main() {
 
 
   const torusknot_geometry = new THREE.TorusKnotGeometry(11, 3, 100, 30);
-  const torusknot_mat = Object.assign(new MeshTransmissionMaterial(8), {
+  const torusknot_mat = new MeshPhysicalMaterial({transparent:true, opacity:0.8});
+ /* const torusknot_mat = Object.assign(new MeshTransmissionMaterial(8), {
     //map:texture,
     clearcoatRoughness: 0,
     transmission: 0.5,
@@ -216,7 +217,7 @@ function main() {
     ior: 1.0,
     envMapIntensity: 1,
 
-  });
+  });*/
   const loader_torus = new THREE.TextureLoader();
 
   const torusknot = new THREE.Mesh(torusknot_geometry, torusknot_mat);
@@ -265,7 +266,6 @@ function main() {
     transparent: true,
     opacity: 0.8,
     envMap: scene.environment,
-    side: THREE.DoubleSide,
   });
 
 
@@ -431,9 +431,9 @@ function makeKnot() {
   const knot_mat = Object.assign(new MeshTransmissionMaterial(10), {
     //map:texture,
     //clearcoatRoughness: 0,
-    //transmission: 0.2,
-    //transparent: true,
-    //opacity: 0.95,
+    transmission: 0.2,
+    transparent: true,
+    opacity: 0.95,
     //anisotropy: 0.5,
     // Set to > 0 for diffuse roughness
     roughness: 0.1,
@@ -506,7 +506,7 @@ function makeSphere(x, y, z, s) {
 function addKnot(x, y, z, s, r) {
 
   const torusknot2_geometry = new THREE.TorusKnotGeometry(0.8, 0.12, 80, 35);
-  const torusknot2_mat = new MeshPhongMaterial({specular: 0xffffff, shininess: 100});
+  const torusknot2_mat = new MeshPhongMaterial({specular:0xffffff,shininess:100});
   /*const torusknot2_mat = Object.assign(new MeshTransmissionMaterial(8), {
     //map:texture,
     clearcoatRoughness: 1,
