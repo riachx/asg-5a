@@ -36,17 +36,17 @@ function main() {
 
 
   const color = 0xFFFFFF;
-  const intensity = 1;
+  const intensity = 0.01;
   const light = new THREE.DirectionalLight(color, intensity);
   light.position.set(-1, 2, 4);
 
-  const intensity2 = 1;
+  const intensity2 = 0.01;
   const color2 = 0xe667c6;
   const light2 = new THREE.AmbientLight(color2, intensity2);
   light2.position.set(1, 2, -2);
 
 
-  const intensity3 = 2;
+  const intensity3 = 0.2;
   const light3 = new THREE.PointLight(color, intensity3);
   light3.position.set(-1.5, 1, 0);
   light3.scale.set(0.1, 0.1, 0.1)
