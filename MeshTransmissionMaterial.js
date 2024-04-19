@@ -8,7 +8,7 @@
  *    https://github.com/junni-inc/next.junni.co.jp/blob/master/src/ts/MainScene/World/Sections/Section2/Transparents/Transparent/shaders/transparent.fs
  */
 
-import * as THREE from 'three'
+import * as THREE from 'three';
 
 export class MeshTransmissionMaterial extends THREE.MeshPhysicalMaterial {
   constructor(samples = 6) {
