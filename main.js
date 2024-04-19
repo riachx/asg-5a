@@ -228,7 +228,7 @@ function main() {
   rgbeLoader.load('./assets/belfast.hdr', function (texture) {
     texture.mapping = THREE.EquirectangularReflectionMapping;
     renderer.toneMapping = THREE.CineonToneMapping;
-    renderer.toneMappingExposure = 0.7;
+    renderer.toneMappingExposure = 0.9;
     
     // Set the scene background or environment
     //scene.background = texture;
