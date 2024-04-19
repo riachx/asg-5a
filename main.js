@@ -258,12 +258,9 @@ function main() {
   });*/
 
   const spiral_mat = new THREE.MeshPhysicalMaterial({
-    transmission: 0.9,
-    thickness: 10,
+    transmission: 1,
     roughness: 0,
     envMap: scene.environment,
-    transparent: true,
-    opacity: 0.7,
   });
 
 
