@@ -412,20 +412,20 @@ function addCubes(x, y, z, s) {
 
 function makeKnot() {
   const knot_geo = new THREE.TorusGeometry(0.7, 0.1, 4, 40);
-  const knot_mat = new MeshPhongMaterial();
-  /*const knot_mat = Object.assign(new MeshTransmissionMaterial(8), {
+  //const knot_mat = new MeshPhongMaterial();
+  const knot_mat = Object.assign(new MeshTransmissionMaterial(8), {
     //map:texture,
-    clearcoatRoughness: 0,
-    transmission: 0.96,
+    //clearcoatRoughness: 0,
+    transmission: 0.5,
     //anisotropy: 0.5,
     // Set to > 0 for diffuse roughness
-    roughness: 0,
-    thickness: 1,
-    ior: 1.1,
-    envMapIntensity: 1,
-    bloomstrength: 50,
+    //roughness: 1,
+    //thickness: 1,
+    //ior: 1.1,
+    //envMapIntensity: 1,
+    //bloomstrength: 50,
 
-  });*/
+  });
   const knot = new THREE.Mesh(knot_geo, knot_mat);
   knot.scale.x = 1.6;
   knot.scale.y = 0.8;
